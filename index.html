@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visar Maloku - Web Developer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Inline CSS -->
+    <style>
+        /* General */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header h2 {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 400;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            color: #222;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #333;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Contact & Languages */
+        .contact, .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact div, .languages div {
+            background: #e4e4e4;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        /* Profile & Experience */
+        .profile, .experience, .education {
+            background: #f9f9f9;
+            padding: 15px 20px;
+            border-radius: 8px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 15px;
+        }
+
+        .experience-item h4, .education-item h4 {
+            font-size: 1.1rem;
+            color: #111;
+            margin-bottom: 5px;
+        }
+
+        .experience-item span, .education-item span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Skills */
+        .skills .skill {
+            margin-bottom: 15px;
+        }
+
+        .skills .skill span {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .skills .skill-bar {
+            background: #ddd;
+            border-radius: 20px;
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .skills .skill-bar div {
+            height: 100%;
+            background: #333;
+            border-radius: 20px;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills-list li {
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media(max-width: 700px) {
+            .contact, .languages {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Visar Maloku</h1>
+            <h2>Web Developer - IT & Support</h2>
+        </header>
+
+        <section class="contact">
+            <h3>Contact</h3>
+            <div><i class="fas fa-phone"></i> +383-46-171-622</div>
+            <div><i class="fas fa-envelope"></i> malokuvisar@gmail.com</div>
+            <div><i class="fas fa-map-marker-alt"></i> Kosova</div>
+        </section>
+
+        <section class="languages">
+            <h3>Languages</h3>
+            <div>English (Fluent)</div>
+            <div>Albanian</div>
+        </section>
+
+        <section class="profile">
+            <h3>Profile</h3>
+            <p>
+                Computer Science student (3rd year – Programming) with over 3 years of experience in web and application development. Skilled in building responsive websites, developing mobile applications, and providing IT support solutions. Successfully completed 6+ websites and 1 mobile application. Currently working as an IO Web & App Tester since September 2023.
+            </p>
+            <p>
+                Strong background in customer service and sales, combining technical knowledge with excellent communication skills. Motivated, detail-oriented, and always eager to improve and learn new technologies.
+            </p>
+        </section>
+
+        <section class="experience">
+            <h3>Work Experience</h3>
+            <div class="experience-item">
+                <h4>Independent Web & App Developer | Self-Employed</h4>
+                <span>2022 – Present</span>
+                <ul>
+                    <li>Developed and deployed 6+ professional websites</li>
+                    <li>Built and launched 1 mobile application</li>
+                    <li>Designed responsive UI using HTML, CSS, JavaScript</li>
+                    <li>Backend development with PHP & MySQL</li>
+                    <li>WordPress development & customization</li>
+                    <li>Managed projects from concept to deployment</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h4>IO Web & App Tester</h4>
+                <span>September 2023 – Present</span>
+                <ul>
+                    <li>Manual testing of web and mobile applications</li>
+                    <li>Identifying and reporting bugs</li>
+                    <li>Functional and usability testing</li>
+                    <li>Performance testing and user experience analysis</li>
+                    <li>Working closely with developers to improve application quality</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="skills">
+            <h3>Skills / Programming & Development</h3>
+            <div class="skill">
+                <span>HTML</span>
+                <div class="skill-bar"><div style="width: 90%;"></div></div>
+            </div>
+            <div class="skill">
+                <span>CSS</span>
+                <div class="skill-bar"><div style="width: 85%;"></div></div>
+            </div>
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="skill-bar"><div style="width: 80%;"></div></div>
+            </div>
+            <div class="skill">
+                <span>PHP & MySQL</span>
+                <div class="skill-bar"><div style="width: 75%;"></div></div>
+            </div>
+            <div class="skill">
+                <span>WordPress</span>
+                <div class="skill-bar"><div style="width: 85%;"></div></div>
+            </div>
+            <div class="skill">
+                <span>Java / C# / C++</span>
+                <div class="skill-bar"><div style="width: 70%;"></div></div>
+            </div>
+            <div class="skill">
+                <span>iOS / Android App Development</span>
+                <div class="skill-bar"><div style="width: 75%;"></div></div>
+            </div>
+        </section>
+
+        <section class="skills">
+            <h3>Skills / IT & Support</h3>
+            <ul class="skills-list">
+                <li>IT Support Specialist</li>
+                <li>IT Hardware Support</li>
+                <li>Technical Troubleshooting</li>
+                <li>System Setup & Maintenance</li>
+            </ul>
+        </section>
+
+        <section class="education">
+            <h3>Education</h3>
+            <div class="education-item">
+                <h4>Bachelor in Computer Science – Programming | Kolegji AAB, Pristina</h4>
+                <span>2023 – Present (3rd Year)</span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
