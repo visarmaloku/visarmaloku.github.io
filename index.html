@@ -3,256 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visar Maloku - Web Developer</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+    <title>Visar Maloku | Creative Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Inline CSS -->
     <style>
-        /* General */
+        :root {
+            --primary-orange: #ff8c00;
+            --dark-bg: #0a0a0a;
+            --card-bg: #161616;
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
             line-height: 1.6;
+            padding: 20px;
         }
 
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 1100px;
+            margin: auto;
         }
 
+        /* Header / Hero Section */
         header {
-            text-align: center;
-            margin-bottom: 30px;
+            text-align: left;
+            padding: 60px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 40px;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            color: var(--primary-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         header h2 {
-            font-size: 1.2rem;
-            color: #555;
-            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            font-weight: 300;
         }
 
-        /* Sections */
-        section {
-            margin-bottom: 30px;
-        }
+        /* Sections Styling */
+        section { margin-bottom: 50px; }
 
         h3 {
-            color: #222;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #333;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        /* Contact & Languages */
-        .contact, .languages {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .contact div, .languages div {
-            background: #e4e4e4;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: 500;
-        }
-
-        /* Profile & Experience */
-        .profile, .experience, .education {
-            background: #f9f9f9;
-            padding: 15px 20px;
-            border-radius: 8px;
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 15px;
-        }
-
-        .experience-item h4, .education-item h4 {
-            font-size: 1.1rem;
-            color: #111;
-            margin-bottom: 5px;
-        }
-
-        .experience-item span, .education-item span {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Skills */
-        .skills .skill {
-            margin-bottom: 15px;
-        }
-
-        .skills .skill span {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .skills .skill-bar {
-            background: #ddd;
-            border-radius: 20px;
-            height: 12px;
-            overflow: hidden;
-        }
-
-        .skills .skill-bar div {
-            height: 100%;
-            background: #333;
-            border-radius: 20px;
-        }
-
-        .skills-list {
-            list-style-type: none;
-            display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             gap: 10px;
         }
 
-        .skills-list li {
+        h3::after {
+            content: "";
+            height: 1px;
             background: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            flex-grow: 1;
         }
 
-        /* Responsive */
-        @media(max-width: 700px) {
-            .contact, .languages {
-                flex-direction: column;
-            }
+        /* Contact Pill Styling */
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .contact div {
+            background: var(--card-bg);
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .contact div:hover {
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        /* Experience & Education */
+        .item-box {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-orange);
+            margin-bottom: 20px;
+        }
+
+        .item-box h4 { color: var(--text-main); margin-bottom: 5px; }
+        .item-box span { color: var(--primary-orange); font-size: 0.85rem; font-weight: bold; }
+        ul { margin-top: 10px; padding-left: 20px; color: var(--text-dim); }
+
+        /* Skill Bars */
+        .skill { margin-bottom: 15px; }
+        .skill-bar {
+            background: #222;
+            height: 8px;
+            border-radius: 10px;
+            margin-top: 8px;
+        }
+        .skill-per {
+            background: var(--primary-orange);
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        }
+
+        /* --- PROJECTS GRID (CREATIVE ADDITION) --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+        }
+
+        .project-card i {
+            font-size: 2rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+        }
+
+        .project-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        @media(max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header>
             <h1>Visar Maloku</h1>
-            <h2>Web Developer - IT & Support</h2>
+            <h2>Creative Web Developer & IT Solutions Specialist</h2>
         </header>
 
         <section class="contact">
-            <h3>Contact</h3>
             <div><i class="fas fa-phone"></i> +383-46-171-622</div>
             <div><i class="fas fa-envelope"></i> malokuvisar0@gmail.com</div>
             <div><i class="fas fa-map-marker-alt"></i> Kosova</div>
+            <div><i class="fab fa-linkedin"></i> LinkedIn</div>
         </section>
 
-        <section class="languages">
-            <h3>Languages</h3>
-            <div>English (Fluent)</div>
-            <div>Albanian</div>
-        </section>
-
-        <section class="profile">
+        <section id="profile">
             <h3>Profile</h3>
-            <p>
-                Computer Science student (3rd year – Programming) with over 3 years of experience in web and application development. Skilled in building responsive websites, developing mobile applications, and providing IT support solutions. Successfully completed 6+ websites and 1 mobile application. Currently working as an IO Web & App Tester since September 2023.
-            </p>
-            <p>
-                Strong background in customer service and sales, combining technical knowledge with excellent communication skills. Motivated, detail-oriented, and always eager to improve and learn new technologies.
+            <p style="color: var(--text-dim);">
+                Computer Science student (3rd year) with 3+ years of experience in high-performance web development. 
+                I bridge the gap between technical IT support and creative coding to deliver seamless digital experiences.
             </p>
         </section>
 
-        <section class="experience">
-            <h3>Work Experience</h3>
-            <div class="experience-item">
-                <h4>Independent Web & App Developer | Self-Employed</h4>
-                <span>2022 – Present</span>
-                <ul>
-                    <li>Developed and deployed 6+ professional websites</li>
-                    <li>Built and launched 1 mobile application</li>
-                    <li>Designed responsive UI using HTML, CSS, JavaScript</li>
-                    <li>Backend development with PHP & MySQL</li>
-                    <li>WordPress development & customization</li>
-                    <li>Managed projects from concept to deployment</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <h4>IO Web & App Tester</h4>
-                <span>September 2023 – Present</span>
-                <ul>
-                    <li>Manual testing of web and mobile applications</li>
-                    <li>Identifying and reporting bugs</li>
-                    <li>Functional and usability testing</li>
-                    <li>Performance testing and user experience analysis</li>
-                    <li>Working closely with developers to improve application quality</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="skills">
-            <h3>Skills / Programming & Development</h3>
-            <div class="skill">
-                <span>HTML</span>
-                <div class="skill-bar"><div style="width: 90%;"></div></div>
-            </div>
-            <div class="skill">
-                <span>CSS</span>
-                <div class="skill-bar"><div style="width: 85%;"></div></div>
-            </div>
-            <div class="skill">
-                <span>JavaScript</span>
-                <div class="skill-bar"><div style="width: 80%;"></div></div>
-            </div>
-            <div class="skill">
-                <span>PHP & MySQL</span>
-                <div class="skill-bar"><div style="width: 75%;"></div></div>
-            </div>
-            <div class="skill">
-                <span>WordPress</span>
-                <div class="skill-bar"><div style="width: 85%;"></div></div>
-            </div>
-            <div class="skill">
-                <span>Java / C# / C++</span>
-                <div class="skill-bar"><div style="width: 70%;"></div></div>
-            </div>
-            <div class="skill">
-                <span>iOS / Android App Development</span>
-                <div class="skill-bar"><div style="width: 75%;"></div></div>
+        <section id="projects">
+            <h3>Featured Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <i class="fas fa-dungeon"></i>
+                    <h4>Labyrinth Game</h4>
+                    <p>Logic-based maze crawler with dynamic pathfinding algorithms.</p>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>SMMA Dashboard</h4>
+                    <p>Management platform for Social Media Agencies to track client KPIs.</p>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-coins"></i>
+                    <h4>Slot Machine Game</h4>
+                    <p>A high-stakes JS-based game featuring complex probability logic.</p>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>NikeStore UI</h4>
+                    <p>Modern E-commerce interface focusing on high-end sneaker aesthetics.</p>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-cash-register"></i>
+                    <h4>Restaurant POS</h4>
+                    <p>Full-stack Point of Sale system for table and order management.</p>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Restaurnt Website</h4>
+                    <p>Elegant frontend design with integrated reservation system.</p>
+                </div>
             </div>
         </section>
 
-        <section class="skills">
-            <h3>Skills / IT & Support</h3>
-            <ul class="skills-list">
-                <li>IT Support Specialist</li>
-                <li>IT Hardware Support</li>
-                <li>Technical Troubleshooting</li>
-                <li>System Setup & Maintenance</li>
-            </ul>
-        </section>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;" class="responsive-flex">
+            <section id="experience">
+                <h3>Experience</h3>
+                <div class="item-box">
+                    <h4>Web & App Developer</h4>
+                    <span>2022 – PRESENT</span>
+                    <ul>
+                        <li>6+ Professional Websites Delivered</li>
+                        <li>Mobile App Deployment (iOS/Android)</li>
+                        <li>PHP & MySQL Backend Engineering</li>
+                    </ul>
+                </div>
+                <div class="item-box">
+                    <h4>IO Web & App Tester</h4>
+                    <span>2023 – PRESENT</span>
+                    <ul>
+                        <li>Identifying critical bugs & UX flaws</li>
+                        <li>Performance & Usability analysis</li>
+                    </ul>
+                </div>
+            </section>
 
-        <section class="education">
-            <h3>Education</h3>
-            <div class="education-item">
-                <h4>Bachelor in Computer Science – Programming | Kolegji AAB, Pristina</h4>
-                <span>2023 – Present (3rd Year)</span>
-            </div>
-        </section>
+            <section id="skills">
+                <h3>Technical Skills</h3>
+                <div class="skill">
+                    <span>Modern JavaScript</span>
+                    <div class="skill-bar"><div class="skill-per" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill">
+                    <span>PHP / MySQL</span>
+                    <div class="skill-bar"><div class="skill-per" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Frontend (HTML5/CSS3)</span>
+                    <div class="skill-bar"><div class="skill-per" style="width: 95%;"></div></div>
+                </div>
+                <div class="skill">
+                    <span>App Development</span>
+                    <div class="skill-bar"><div class="skill-per" style="width: 70%;"></div></div>
+                </div>
+            </section>
+        </div>
     </div>
+
 </body>
 </html>
