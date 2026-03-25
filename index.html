@@ -3,167 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visar Maloku | Creative Developer</title>
+    <title>Visar Maloku | Creative Developer & QA</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary-orange: #ff8c00;
-            --dark-bg: #0a0a0a;
-            --card-bg: #161616;
+            --dark-bg: #050505;
+            --card-bg: rgba(25, 25, 25, 0.7);
             --text-main: #ffffff;
-            --text-dim: #b0b0b0;
+            --text-dim: #a0a0a0;
+            --glass-border: rgba(255, 140, 0, 0.15);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-
+        /* Creative Background with Shadow Gradients */
         body {
             background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 140, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 40%);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 20px;
+            padding: 40px 20px;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
+        .container { max-width: 1200px; margin: auto; }
 
-        /* Header / Hero Section */
+        /* Header Section */
         header {
             text-align: left;
-            padding: 60px 0;
-            border-bottom: 1px solid #333;
-            margin-bottom: 40px;
+            padding: 80px 0;
+            position: relative;
         }
 
         header h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             color: var(--primary-orange);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
         }
 
         header h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-dim);
             font-weight: 300;
+            letter-spacing: 3px;
         }
 
-        /* Sections Styling */
-        section { margin-bottom: 50px; }
+        /* Reusable Section Styling */
+        section { margin-bottom: 80px; }
 
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary-orange);
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
         }
 
         h3::after {
             content: "";
             height: 1px;
-            background: #333;
+            background: linear-gradient(90deg, var(--primary-orange), transparent);
             flex-grow: 1;
         }
 
-        /* Contact Pill Styling */
-        .contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
+        /* --- WIDENED EXPERIENCE SECTION --- */
+        .exp-container {
+            display: grid;
+            gap: 30px;
         }
 
-        .contact div {
+        .exp-card {
             background: var(--card-bg);
-            padding: 12px 20px;
-            border-radius: 50px;
-            border: 1px solid #333;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.4s;
+            position: relative;
         }
 
-        .contact div:hover {
+        .exp-card:hover {
             border-color: var(--primary-orange);
-            color: var(--primary-orange);
+            background: rgba(30, 30, 30, 0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Experience & Education */
-        .item-box {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-orange);
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        .item-box h4 { color: var(--text-main); margin-bottom: 5px; }
-        .item-box span { color: var(--primary-orange); font-size: 0.85rem; font-weight: bold; }
-        ul { margin-top: 10px; padding-left: 20px; color: var(--text-dim); }
+        .exp-header h4 { font-size: 1.4rem; color: var(--primary-orange); }
+        .exp-header .date { background: #333; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: #fff; }
 
-        /* Skill Bars */
-        .skill { margin-bottom: 15px; }
-        .skill-bar {
-            background: #222;
-            height: 8px;
-            border-radius: 10px;
-            margin-top: 8px;
-        }
-        .skill-per {
-            background: var(--primary-orange);
-            height: 100%;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
-        }
-
-        /* --- PROJECTS GRID (CREATIVE ADDITION) --- */
-        .projects-grid {
+        .exp-content ul {
+            list-style: none;
+            padding: 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .exp-content li::before {
+            content: "▹";
+            color: var(--primary-orange);
+            margin-right: 10px;
+        }
+
+        /* --- CREATIVE SKILLS GRID --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 20px;
         }
 
-        .project-card {
-            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-            border: 1px solid #333;
-            padding: 30px;
+        .skill-item {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
             border-radius: 15px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: var(--primary-orange);
+            color: #000;
+            font-weight: 700;
+        }
+
+        .skill-item i { font-size: 2rem; margin-bottom: 10px; display: block; }
+
+        /* --- PROJECTS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: scale(1.03);
             border-color: var(--primary-orange);
+            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.1);
         }
 
-        .project-card i {
-            font-size: 2rem;
+        .btn-view {
+            text-decoration: none;
+            color: #000;
+            background: var(--primary-orange);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-view:hover { box-shadow: 0 0 20px var(--primary-orange); }
+
+        /* Footer & Contact */
+        .contact-footer {
+            text-align: center;
+            padding: 60px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .linkedin-link {
             color: var(--primary-orange);
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            border: 2px solid var(--primary-orange);
+            padding: 10px 30px;
+            border-radius: 50px;
+            transition: 0.3s;
         }
 
-        .project-card h4 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+        .linkedin-link:hover {
+            background: var(--primary-orange);
+            color: #000;
         }
 
-        .project-card p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        @media(max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
+        @media (max-width: 768px) {
+            .exp-header { flex-direction: column; }
+            .exp-content ul { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -171,103 +218,104 @@
 
     <div class="container">
         <header>
-            <h1>Visar Maloku</h1>
-            <h2>Creative Web Developer & IT Solutions Specialist</h2>
+            <h1>VISAR MALOKU</h1>
+            <h2>3rd YEAR CS STUDENT • FULL STACK DEVELOPER • QA TESTER</h2>
         </header>
 
-        <section class="contact">
-            <div><i class="fas fa-phone"></i> +383-46-171-622</div>
-            <div><i class="fas fa-envelope"></i> malokuvisar0@gmail.com</div>
-            <div><i class="fas fa-map-marker-alt"></i> Kosova</div>
-            <div><i class="fab fa-linkedin"></i> LinkedIn</div>
-        </section>
+        <section id="experience">
+            <h3>Work Experience</h3>
+            <div class="exp-container">
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <h4>IO Web & App Tester</h4>
+                        <span class="date">Sept 2023 – Present</span>
+                    </div>
+                    <div class="exp-content">
+                        <ul>
+                            <li>Advanced manual & automated testing for global web applications.</li>
+                            <li>Critical bug reporting and collaboration with dev teams to refine UX.</li>
+                            <li>Performance stress testing and cross-browser compatibility verification.</li>
+                            <li>Usability analysis focused on conversion and retention.</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <section id="profile">
-            <h3>Profile</h3>
-            <p style="color: var(--text-dim);">
-                Computer Science student (3rd year) with 3+ years of experience in high-performance web development. 
-                I bridge the gap between technical IT support and creative coding to deliver seamless digital experiences.
-            </p>
-        </section>
-
-        <section id="projects">
-            <h3>Featured Projects</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <i class="fas fa-dungeon"></i>
-                    <h4>Labyrinth Game</h4>
-                    <p>Logic-based maze crawler with dynamic pathfinding algorithms.</p>
-                </div>
-                <div class="project-card">
-                    <i class="fas fa-bullhorn"></i>
-                    <h4>SMMA Dashboard</h4>
-                    <p>Management platform for Social Media Agencies to track client KPIs.</p>
-                </div>
-                <div class="project-card">
-                    <i class="fas fa-coins"></i>
-                    <h4>Slot Machine Game</h4>
-                    <p>A high-stakes JS-based game featuring complex probability logic.</p>
-                </div>
-                <div class="project-card">
-                    <i class="fas fa-shopping-bag"></i>
-                    <h4>NikeStore UI</h4>
-                    <p>Modern E-commerce interface focusing on high-end sneaker aesthetics.</p>
-                </div>
-                <div class="project-card">
-                    <i class="fas fa-cash-register"></i>
-                    <h4>Restaurant POS</h4>
-                    <p>Full-stack Point of Sale system for table and order management.</p>
-                </div>
-                <div class="project-card">
-                    <i class="fas fa-utensils"></i>
-                    <h4>Restaurnt Website</h4>
-                    <p>Elegant frontend design with integrated reservation system.</p>
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <h4>Independent Developer | Self-Employed</h4>
+                        <span class="date">2022 – Present</span>
+                    </div>
+                    <div class="exp-content">
+                        <ul>
+                            <li>Engineered 6+ bespoke business websites using modern stacks.</li>
+                            <li>Launched a native mobile application for local market services.</li>
+                            <li>Implemented secure PHP/MySQL backends for e-commerce solutions.</li>
+                            <li>Optimized legacy WordPress sites for 40% faster loading speeds.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;" class="responsive-flex">
-            <section id="experience">
-                <h3>Experience</h3>
-                <div class="item-box">
-                    <h4>Web & App Developer</h4>
-                    <span>2022 – PRESENT</span>
-                    <ul>
-                        <li>6+ Professional Websites Delivered</li>
-                        <li>Mobile App Deployment (iOS/Android)</li>
-                        <li>PHP & MySQL Backend Engineering</li>
-                    </ul>
-                </div>
-                <div class="item-box">
-                    <h4>IO Web & App Tester</h4>
-                    <span>2023 – PRESENT</span>
-                    <ul>
-                        <li>Identifying critical bugs & UX flaws</li>
-                        <li>Performance & Usability analysis</li>
-                    </ul>
-                </div>
-            </section>
+        <section id="skills">
+            <h3>Technical Arsenal</h3>
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fab fa-js"></i>JavaScript</div>
+                <div class="skill-item"><i class="fab fa-php"></i>PHP & MySQL</div>
+                <div class="skill-item"><i class="fab fa-html5"></i>HTML5 / CSS3</div>
+                <div class="skill-item"><i class="fas fa-bug"></i>QA & Testing</div>
+                <div class="skill-item"><i class="fab fa-wordpress"></i>WordPress</div>
+                <div class="skill-item"><i class="fas fa-mobile-alt"></i>App Dev</div>
+                <div class="skill-item"><i class="fas fa-code"></i>C# / Java</div>
+                <div class="skill-item"><i class="fas fa-server"></i>IT Support</div>
+            </div>
+        </section>
 
-            <section id="skills">
-                <h3>Technical Skills</h3>
-                <div class="skill">
-                    <span>Modern JavaScript</span>
-                    <div class="skill-bar"><div class="skill-per" style="width: 85%;"></div></div>
+        <section id="projects">
+            <h3>Creative Portfolio</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <i class="fas fa-dungeon" style="color: var(--primary-orange); font-size: 2rem;"></i>
+                        <h4>Labyrinth Game</h4>
+                        <p>Logic-driven dungeon crawler featuring dynamic maze generation.</p>
+                    </div>
+                    <a href="#" class="btn-view">LIVE DEMO</a>
                 </div>
-                <div class="skill">
-                    <span>PHP / MySQL</span>
-                    <div class="skill-bar"><div class="skill-per" style="width: 75%;"></div></div>
+                <div class="project-card">
+                    <div>
+                        <i class="fas fa-chart-line" style="color: var(--primary-orange); font-size: 2rem;"></i>
+                        <h4>SMMA Agency</h4>
+                        <p>Digital dashboard for tracking social media metrics and client growth.</p>
+                    </div>
+                    <a href="#" class="btn-view">LIVE DEMO</a>
                 </div>
-                <div class="skill">
-                    <span>Frontend (HTML5/CSS3)</span>
-                    <div class="skill-bar"><div class="skill-per" style="width: 95%;"></div></div>
+                <div class="project-card">
+                    <div>
+                        <i class="fas fa-shopping-cart" style="color: var(--primary-orange); font-size: 2rem;"></i>
+                        <h4>NikeStore UI</h4>
+                        <p>High-end e-commerce concept focusing on animations and product UX.</p>
+                    </div>
+                    <a href="#" class="btn-view">LIVE DEMO</a>
                 </div>
-                <div class="skill">
-                    <span>App Development</span>
-                    <div class="skill-bar"><div class="skill-per" style="width: 70%;"></div></div>
+                <div class="project-card">
+                    <div>
+                        <i class="fas fa-desktop" style="color: var(--primary-orange); font-size: 2rem;"></i>
+                        <h4>Restaurant POS</h4>
+                        <p>A full-scale Point of Sale system for table management and reporting.</p>
+                    </div>
+                    <a href="#" class="btn-view">LIVE DEMO</a>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <section class="contact-footer">
+            <h3>Let's Collaborate</h3>
+            <p style="margin-bottom: 30px; color: var(--text-dim);">Ready to build or test your next big idea?</p>
+            <a href="https://www.linkedin.com/in/visar-maloku-150091295/" class="linkedin-link" target="_blank">
+                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            </a>
+        </section>
     </div>
 
 </body>
