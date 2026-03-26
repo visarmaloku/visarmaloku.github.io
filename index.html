@@ -3,181 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visar Maloku | Portfolio</title>
+    <title>Visar Maloku | Creative Developer & QA</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --neon-purple: #bc13fe;
             --dark-bg: #050505;
-            --card-bg: rgba(20, 20, 20, 0.7);
+            --card-bg: rgba(25, 25, 25, 0.8);
             --text-main: #ffffff;
-            --text-dim: #b0b0b0;
-            --glass-border: rgba(188, 19, 254, 0.25);
-            --neon-glow: 0 0 20px rgba(188, 19, 254, 0.4);
+            --text-dim: #a0a0a0;
+            --glass-border: rgba(188, 19, 254, 0.2);
+            --neon-glow: 0 0 15px rgba(188, 19, 254, 0.4);
         }
-
-        * { box-sizing: border-box; }
 
         body {
             background-color: var(--dark-bg);
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(188, 19, 254, 0.15) 0%, transparent 35%),
-                radial-gradient(circle at 85% 85%, rgba(188, 19, 254, 0.1) 0%, transparent 35%);
+                radial-gradient(circle at 10% 20%, rgba(188, 19, 254, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(188, 19, 254, 0.05) 0%, transparent 40%);
             color: var(--text-main);
             font-family: 'Poppins', sans-serif;
             margin: 0;
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
-        .container { max-width: 1200px; margin: auto; padding: 0 25px; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
 
         /* --- HERO SECTION --- */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 90vh;
-            gap: 60px;
-            padding: 80px 0;
+            min-height: 100vh;
+            gap: 50px;
+            padding: 60px 0;
         }
 
         .hero-text { flex: 1.2; }
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            color: var(--neon-purple);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 0 0 25px rgba(188, 19, 254, 0.7);
-        }
-
         .hero-image {
             flex: 0.8;
-            height: 550px;
-            border-radius: 30px;
+            height: 500px;
+            border-radius: 20px;
             overflow: hidden;
             border: 2px solid var(--neon-purple);
             box-shadow: var(--neon-glow);
         }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; }
 
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--neon-purple); text-transform: uppercase; font-weight: 700; margin: 0; text-shadow: var(--neon-glow); }
+        .sub-header { font-size: 1.2rem; color: var(--text-dim); letter-spacing: 3px; margin-bottom: 20px; }
 
-        /* --- PROJECT GRID --- */
-        section { padding: 60px 0; }
-        h3 {
-            font-size: 2rem;
-            color: var(--neon-purple);
-            margin-bottom: 50px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        /* --- GRID LAYOUT --- */
+        .main-layout { display: grid; grid-template-columns: 1fr 2.5fr; gap: 40px; margin-top: 50px; }
 
-        h3::after {
-            content: "";
-            height: 1px;
-            background: linear-gradient(90deg, var(--neon-purple), transparent);
-            flex-grow: 1;
-        }
+        section { margin-bottom: 60px; }
+        h3 { color: var(--neon-purple); text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
+        .card { background: var(--card-bg); border: 1px solid var(--glass-border); padding: 25px; border-radius: 15px; margin-bottom: 20px; transition: 0.3s; }
+        .card:hover { border-color: var(--neon-purple); box-shadow: var(--neon-glow); }
 
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 35px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-        }
+        /* --- PROJECTS GRID --- */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); padding: 20px; border-radius: 15px; text-decoration: none; color: white; transition: 0.3s; position: relative; overflow: hidden; }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--neon-purple); box-shadow: var(--neon-glow); }
+        .project-card i { font-size: 1.5rem; color: var(--neon-purple); margin-bottom: 10px; display: block; }
+        
+        .live-tag { position: absolute; top: 10px; right: -25px; background: var(--neon-purple); color: black; font-size: 0.6rem; font-weight: bold; padding: 2px 30px; transform: rotate(45deg); }
 
-        .project-card::before {
-            content: "LIVE";
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--neon-purple);
-            color: black;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            box-shadow: 0 0 10px var(--neon-purple);
-        }
+        /* --- CONTACT & LANGUAGES --- */
+        .contact-list, .lang-list { list-style: none; padding: 0; color: var(--text-dim); }
+        .contact-list li { margin-bottom: 10px; }
+        .contact-list i { color: var(--neon-purple); margin-right: 10px; }
 
-        .project-card:hover {
-            border-color: var(--neon-purple);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-10px);
-            background: rgba(30, 30, 30, 0.9);
-        }
-
-        .project-card i {
-            font-size: 2.5rem;
-            color: var(--neon-purple);
-            margin-bottom: 20px;
-        }
-
-        .project-card h4 {
-            font-size: 1.5rem;
-            margin: 0 0 10px 0;
-            color: #fff;
-        }
-
-        .project-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
-
-        .btn-preview {
-            display: inline-block;
-            text-align: center;
-            background: transparent;
-            color: var(--neon-purple);
-            border: 1px solid var(--neon-purple);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .project-card:hover .btn-preview {
-            background: var(--neon-purple);
-            color: #000;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 100px 0;
-            border-top: 1px solid var(--glass-border);
-        }
+        .skill-tag { display: inline-block; background: #1a1a1a; border: 1px solid var(--neon-purple); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; margin: 4px; }
 
         @media (max-width: 900px) {
             .hero { flex-direction: column-reverse; text-align: center; }
-            .hero-image { width: 100%; height: 400px; }
-            .projects-grid { grid-template-columns: 1fr; }
+            .main-layout { grid-template-columns: 1fr; }
+            .hero-image { width: 100%; height: 350px; }
         }
     </style>
 </head>
@@ -187,81 +91,138 @@
         <section class="hero">
             <div class="hero-text">
                 <h1>VISAR MALOKU</h1>
-                <h2 style="color: var(--text-dim); letter-spacing: 3px; font-weight: 300;">DEVELOPER • QA TESTER • CREATIVE</h2>
-                <p style="color: var(--text-dim); max-width: 500px; margin-bottom: 40px;">3rd Year CS Student building high-performance applications and ensuring digital quality through rigorous testing.</p>
-                <a href="#projects" class="btn-preview" style="padding: 15px 40px; font-size: 1rem;">View Projects</a>
+                <div class="sub-header">WEB DEVELOPER - IT & SUPPORT</div>
+                <p style="max-width: 550px;">Computer Science student (3rd year) with over 3 years of experience in web and application development. Skilled in building responsive websites, developing mobile applications, and providing IT support solutions.</p>
+                <a href="mailto:malokuvisar@gmail.com" style="text-decoration: none; color: var(--neon-purple); border: 2px solid var(--neon-purple); padding: 10px 30px; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px;">CONTACT ME</a>
             </div>
             <div class="hero-image">
-                <img src="IMG_8374.jpg" alt="Visar Maloku">
+                <img src="IMG_8374.jpg" alt="Visar Maloku Coding">
             </div>
         </section>
 
-        <section id="projects">
-            <h3>Deployed Projects</h3>
-            <div class="projects-grid">
-                
-                <a href="https://sahora.tech" class="project-card" target="_blank">
-                    <div>
-                        <i class="fas fa-globe"></i>
-                        <h4>Sahora.tech</h4>
-                        <p>My personal digital headquarters. A high-speed, modern website showcasing my full identity and services.</p>
-                    </div>
-                    <span class="btn-preview">Visit Website</span>
-                </a>
+        <div class="main-layout">
+            <div class="sidebar">
+                <section>
+                    <h3>Contact</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-phone"></i> +383-46-171-622</li>
+                        <li><i class="fas fa-envelope"></i> malokuvisar@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kosova</li>
+                    </ul>
+                </section>
 
-                <a href="#" class="project-card">
-                    <div>
-                        <i class="fas fa-chart-line"></i>
-                        <h4>Social Media Agency</h4>
-                        <p>A professional landing page and dashboard for managing client growth and marketing metrics.</p>
-                    </div>
-                    <span class="btn-preview">Live Demo</span>
-                </a>
+                <section>
+                    <h3>Languages</h3>
+                    <ul class="lang-list">
+                        <li>English (Fluent)</li>
+                        <li>Albanian (Native)</li>
+                    </ul>
+                </section>
 
-                <a href="#" class="project-card">
-                    <div>
-                        <i class="fas fa-bolt"></i>
-                        <h4>Nike Shoe UI</h4>
-                        <p>An advanced E-commerce concept focusing on smooth transitions, animations, and premium product UX.</p>
+                <section>
+                    <h3>Technical Stack</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span><span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Java</span><span class="skill-tag">C#</span>
+                        <span class="skill-tag">C++</span><span class="skill-tag">iOS / Android</span>
                     </div>
-                    <span class="btn-preview">View Concept</span>
-                </a>
+                </section>
 
-                <a href="#" class="project-card">
-                    <div>
-                        <i class="fas fa-utensils"></i>
-                        <h4>Restaurant POS System</h4>
-                        <p>Full-scale Point of Sale software for table management, order tracking, and financial reporting.</p>
+                <section>
+                    <h3>IT & Support</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Hardware Support</span>
+                        <span class="skill-tag">Troubleshooting</span>
+                        <span class="skill-tag">System Maintenance</span>
                     </div>
-                    <span class="btn-preview">Launch App</span>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div>
-                        <i class="fas fa-dungeon"></i>
-                        <h4>The Maze Game</h4>
-                        <p>A logic-based dungeon crawler with dynamic maze generation and pathfinding algorithms.</p>
-                    </div>
-                    <span class="btn-preview">Play Now</span>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div>
-                        <i class="fas fa-coins"></i>
-                        <h4>Slot Machine Game</h4>
-                        <p>A mathematical simulation of casino mechanics with custom graphics and probability logic.</p>
-                    </div>
-                    <span class="btn-preview">Play Now</span>
-                </a>
-
+                </section>
             </div>
-        </section>
 
-        <footer>
-            <h3 style="justify-content: center;">Let's Work Together</h3>
-            <a href="https://www.linkedin.com/in/visar-maloku-150091295/" class="btn-preview" target="_blank" style="padding: 15px 40px;">
-                <i class="fab fa-linkedin"></i> Connect on LinkedIn
-            </a>
+            <div class="content">
+                <section>
+                    <h3>Work Experience</h3>
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h4 style="margin: 0; color: var(--neon-purple);">IO Web & App Tester</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-dim);">Sept 2023 – Present</span>
+                        </div>
+                        <ul style="padding-left: 20px; font-size: 0.9rem;">
+                            <li>Manual testing of web and mobile applications & identifying bugs.</li>
+                            <li>Functional, usability, and performance testing.</li>
+                            <li>Working closely with developers to improve application quality.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h4 style="margin: 0; color: var(--neon-purple);">Independent Developer</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-dim);">2022 – Present</span>
+                        </div>
+                        <ul style="padding-left: 20px; font-size: 0.9rem;">
+                            <li>Developed and deployed 6+ professional websites.</li>
+                            <li>Built and launched 1 mobile application.</li>
+                            <li>Backend development with PHP & MySQL.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Education</h3>
+                    <div class="card">
+                        <h4 style="margin: 0; color: var(--neon-purple);">Bachelor in Computer Science</h4>
+                        <p style="margin: 5px 0;">Kolegji AAB, Pristina</p>
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">2023 – Present (3rd Year)</span>
+                    </div>
+                </section>
+
+                <section id="projects">
+                    <h3>Featured Projects</h3>
+                    <div class="projects-grid">
+                        <a href="https://sahora.tech" class="project-card" target="_blank">
+                            <span class="live-tag">LIVE</span>
+                            <i class="fas fa-globe"></i>
+                            <h4>Sahora.tech</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Personal branding website and services.</p>
+                        </a>
+                        <a href="#" class="project-card">
+                            <span class="live-tag">LIVE</span>
+                            <i class="fas fa-utensils"></i>
+                            <h4>Restaurant POS</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Management system for hospitality.</p>
+                        </a>
+                        <a href="#" class="project-card">
+                            <span class="live-tag">LIVE</span>
+                            <i class="fas fa-gamepad"></i>
+                            <h4>Maze Game</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Logic-driven dungeon crawler.</p>
+                        </a>
+                        <a href="#" class="project-card">
+                            <span class="live-tag">LIVE</span>
+                            <i class="fas fa-bullhorn"></i>
+                            <h4>SMMA Website</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Agency dashboard and marketing site.</p>
+                        </a>
+                        <a href="#" class="project-card">
+                            <span class="live-tag">LIVE</span>
+                            <i class="fas fa-shoe-prints"></i>
+                            <h4>Nike UI Concept</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">E-commerce UI/UX research project.</p>
+                        </a>
+                        <a href="#" class="project-card">
+                            <span class="live-tag">LIVE</span>
+                            <i class="fas fa-slot-machine"></i>
+                            <h4>Slot Machine</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Logic-based game simulation.</p>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 60px 0; border-top: 1px solid var(--glass-border); margin-top: 50px;">
+            <p style="color: var(--text-dim);">© 2026 Visar Maloku. Built with Neon Purple Logic.</p>
         </footer>
     </div>
 
