@@ -8,58 +8,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --primary-orange: #ff8c00;
+            --neon-purple: #bc13fe;
             --dark-bg: #050505;
-            --card-bg: rgba(25, 25, 25, 0.7);
+            --card-bg: rgba(20, 20, 20, 0.8);
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --glass-border: rgba(255, 140, 0, 0.15);
+            --text-dim: #b0b0b0;
+            --glass-border: rgba(188, 19, 254, 0.3);
+            --neon-glow: 0 0 15px rgba(188, 19, 254, 0.5);
         }
 
-        /* Creative Background with Shadow Gradients */
         body {
             background-color: var(--dark-bg);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 140, 0, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(188, 19, 254, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(188, 19, 254, 0.1) 0%, transparent 40%);
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 40px 20px;
             font-family: 'Poppins', sans-serif;
             margin: 0;
+            line-height: 1.6;
+            padding: 0;
         }
 
-        .container { max-width: 1200px; margin: auto; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
 
-        /* Header Section */
-        header {
-            text-align: left;
-            padding: 80px 0;
-            position: relative;
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            gap: 50px;
+        }
+
+        .hero-text { flex: 1.2; }
+
+        .hero-image {
+            flex: 0.8;
+            height: 550px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--neon-purple);
+            box-shadow: var(--neon-glow);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(110%);
         }
 
         header h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--primary-orange);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--neon-purple);
             text-transform: uppercase;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+            text-shadow: 0 0 20px rgba(188, 19, 254, 0.6);
         }
 
         header h2 {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             color: var(--text-dim);
             font-weight: 300;
             letter-spacing: 3px;
+            margin-bottom: 30px;
         }
 
-        /* Reusable Section Styling */
-        section { margin-bottom: 80px; }
+        /* --- EXPERIENCE & SKILLS --- */
+        section { margin-bottom: 100px; }
 
         h3 {
             font-size: 1.8rem;
-            color: var(--primary-orange);
+            color: var(--neon-purple);
             margin-bottom: 40px;
             display: flex;
             align-items: center;
@@ -69,14 +90,8 @@
         h3::after {
             content: "";
             height: 1px;
-            background: linear-gradient(90deg, var(--primary-orange), transparent);
+            background: linear-gradient(90deg, var(--neon-purple), transparent);
             flex-grow: 1;
-        }
-
-        /* --- WIDENED EXPERIENCE SECTION --- */
-        .exp-container {
-            display: grid;
-            gap: 30px;
         }
 
         .exp-card {
@@ -86,44 +101,21 @@
             padding: 40px;
             border-radius: 20px;
             transition: 0.4s;
-            position: relative;
+            margin-bottom: 20px;
         }
 
         .exp-card:hover {
-            border-color: var(--primary-orange);
-            background: rgba(30, 30, 30, 0.9);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: var(--neon-purple);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-5px);
         }
 
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
+        .exp-header h4 { font-size: 1.4rem; color: var(--neon-purple); margin: 0; }
+        .exp-header .date { border: 1px solid var(--neon-purple); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
 
-        .exp-header h4 { font-size: 1.4rem; color: var(--primary-orange); }
-        .exp-header .date { background: #333; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: #fff; }
-
-        .exp-content ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-        }
-
-        .exp-content li::before {
-            content: "▹";
-            color: var(--primary-orange);
-            margin-right: 10px;
-        }
-
-        /* --- CREATIVE SKILLS GRID --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 20px;
         }
 
@@ -137,122 +129,79 @@
         }
 
         .skill-item:hover {
-            transform: translateY(-5px);
-            background: var(--primary-orange);
+            background: var(--neon-purple);
             color: #000;
             font-weight: 700;
+            box-shadow: var(--neon-glow);
         }
 
         .skill-item i { font-size: 2rem; margin-bottom: 10px; display: block; }
 
-        /* --- PROJECTS GRID --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .project-card:hover {
-            transform: scale(1.03);
-            border-color: var(--primary-orange);
-            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.1);
-        }
-
-        .btn-view {
-            text-decoration: none;
-            color: #000;
-            background: var(--primary-orange);
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 700;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-
-        .btn-view:hover { box-shadow: 0 0 20px var(--primary-orange); }
-
-        /* Footer & Contact */
-        .contact-footer {
-            text-align: center;
-            padding: 60px;
-            background: var(--card-bg);
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-        }
-
+        /* --- BUTTONS --- */
         .linkedin-link {
-            color: var(--primary-orange);
-            font-size: 1.5rem;
+            color: var(--neon-purple);
+            font-size: 1.2rem;
             text-decoration: none;
-            border: 2px solid var(--primary-orange);
-            padding: 10px 30px;
+            border: 2px solid var(--neon-purple);
+            padding: 15px 40px;
             border-radius: 50px;
             transition: 0.3s;
+            box-shadow: var(--neon-glow);
         }
 
         .linkedin-link:hover {
-            background: var(--primary-orange);
+            background: var(--neon-purple);
             color: #000;
         }
 
-        @media (max-width: 768px) {
-            .exp-header { flex-direction: column; }
-            .exp-content ul { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding: 40px 0; }
+            .hero-image { width: 100%; height: 350px; }
+            header h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <h1>VISAR MALOKU</h1>
-            <h2>3rd YEAR CS STUDENT • FULL STACK DEVELOPER • QA TESTER</h2>
-        </header>
+        <section class="hero">
+            <div class="hero-text">
+                <header>
+                    <h1>VISAR MALOKU</h1>
+                    <h2>3rd YEAR CS STUDENT • FULL STACK DEVELOPER • QA TESTER</h2>
+                </header>
+                <p style="color: var(--text-dim); margin-bottom: 40px; max-width: 500px;">Crafting seamless digital experiences through code and precision testing. Specializing in full-stack solutions with a focus on neon-grade UI/UX.</p>
+                <a href="#experience" class="linkedin-link" style="font-size: 1rem; padding: 12px 30px;">Explore Portfolio</a>
+            </div>
+            <div class="hero-image">
+                <img src="data:image/jpeg;base64,{{IMAGE_DATA_PLACEHOLDER}}" alt="Visar Maloku">
+            </div>
+        </section>
 
         <section id="experience">
             <h3>Work Experience</h3>
             <div class="exp-container">
                 <div class="exp-card">
-                    <div class="exp-header">
+                    <div class="exp-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                         <h4>IO Web & App Tester</h4>
                         <span class="date">Sept 2023 – Present</span>
                     </div>
-                    <div class="exp-content">
-                        <ul>
-                            <li>Advanced manual & automated testing for global web applications.</li>
-                            <li>Critical bug reporting and collaboration with dev teams to refine UX.</li>
-                            <li>Performance stress testing and cross-browser compatibility verification.</li>
-                            <li>Usability analysis focused on conversion and retention.</li>
-                        </ul>
-                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><span style="color: var(--neon-purple);">▹</span> Advanced manual & automated testing for global web applications.</li>
+                        <li style="margin-bottom: 10px;"><span style="color: var(--neon-purple);">▹</span> Critical bug reporting and collaboration with dev teams to refine UX.</li>
+                        <li style="margin-bottom: 10px;"><span style="color: var(--neon-purple);">▹</span> Usability analysis focused on conversion and retention.</li>
+                    </ul>
                 </div>
 
                 <div class="exp-card">
-                    <div class="exp-header">
-                        <h4>Independent Developer | Self-Employed</h4>
+                    <div class="exp-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h4>Independent Developer</h4>
                         <span class="date">2022 – Present</span>
                     </div>
-                    <div class="exp-content">
-                        <ul>
-                            <li>Engineered 6+ bespoke business websites using modern stacks.</li>
-                            <li>Launched a native mobile application for local market services.</li>
-                            <li>Implemented secure PHP/MySQL backends for e-commerce solutions.</li>
-                            <li>Optimized legacy WordPress sites for 40% faster loading speeds.</li>
-                        </ul>
-                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><span style="color: var(--neon-purple);">▹</span> Engineered 6+ bespoke business websites using modern stacks.</li>
+                        <li style="margin-bottom: 10px;"><span style="color: var(--neon-purple);">▹</span> Optimized legacy WordPress sites for 40% faster loading speeds.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -262,60 +211,19 @@
             <div class="skills-grid">
                 <div class="skill-item"><i class="fab fa-js"></i>JavaScript</div>
                 <div class="skill-item"><i class="fab fa-php"></i>PHP & MySQL</div>
-                <div class="skill-item"><i class="fab fa-html5"></i>HTML5 / CSS3</div>
                 <div class="skill-item"><i class="fas fa-bug"></i>QA & Testing</div>
                 <div class="skill-item"><i class="fab fa-wordpress"></i>WordPress</div>
-                <div class="skill-item"><i class="fas fa-mobile-alt"></i>App Dev</div>
                 <div class="skill-item"><i class="fas fa-code"></i>C# / Java</div>
-                <div class="skill-item"><i class="fas fa-server"></i>IT Support</div>
             </div>
         </section>
 
-        <section id="projects">
-            <h3>Creative Portfolio</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div>
-                        <i class="fas fa-dungeon" style="color: var(--primary-orange); font-size: 2rem;"></i>
-                        <h4>Labyrinth Game</h4>
-                        <p>Logic-driven dungeon crawler featuring dynamic maze generation.</p>
-                    </div>
-                    <a href="#" class="btn-view">LIVE DEMO</a>
-                </div>
-                <div class="project-card">
-                    <div>
-                        <i class="fas fa-chart-line" style="color: var(--primary-orange); font-size: 2rem;"></i>
-                        <h4>SMMA Agency</h4>
-                        <p>Digital dashboard for tracking social media metrics and client growth.</p>
-                    </div>
-                    <a href="#" class="btn-view">LIVE DEMO</a>
-                </div>
-                <div class="project-card">
-                    <div>
-                        <i class="fas fa-shopping-cart" style="color: var(--primary-orange); font-size: 2rem;"></i>
-                        <h4>NikeStore UI</h4>
-                        <p>High-end e-commerce concept focusing on animations and product UX.</p>
-                    </div>
-                    <a href="#" class="btn-view">LIVE DEMO</a>
-                </div>
-                <div class="project-card">
-                    <div>
-                        <i class="fas fa-desktop" style="color: var(--primary-orange); font-size: 2rem;"></i>
-                        <h4>Restaurant POS</h4>
-                        <p>A full-scale Point of Sale system for table management and reporting.</p>
-                    </div>
-                    <a href="#" class="btn-view">LIVE DEMO</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-footer">
-            <h3>Let's Collaborate</h3>
-            <p style="margin-bottom: 30px; color: var(--text-dim);">Ready to build or test your next big idea?</p>
+        <footer style="text-align: center; padding: 100px 20px; background: rgba(188, 19, 254, 0.05); border-radius: 40px; margin-bottom: 40px;">
+            <h3 style="justify-content: center;">Let's Collaborate</h3>
+            <p style="margin-bottom: 40px; color: var(--text-dim);">Ready to build or test your next big idea?</p>
             <a href="https://www.linkedin.com/in/visar-maloku-150091295/" class="linkedin-link" target="_blank">
                 <i class="fab fa-linkedin"></i> Connect on LinkedIn
             </a>
-        </section>
+        </footer>
     </div>
 
 </body>
